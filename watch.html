@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oglądaj film</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5 text-center">
+        <h2 class="neon-text">Oglądaj swój film</h2>
+        <video controls class="mt-4" width="100%">
+            <source src="{{ url_for('static', filename='uploads/' + video_filename) }}" type="video/mp4">
+            Twoja przeglądarka nie wspiera odtwarzania wideo.
+        </video>
+        <a href="{{ url_for('index') }}" class="btn btn-neon mt-3">Powrót na stronę główną</a>
+    </div>
+</body>
+</html>

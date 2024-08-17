@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ category|capitalize }} - Filmy</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand neon-text" href="{{ url_for('index') }}">VideoSite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='cipka') }}">Cipka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='geje') }}">Geje</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='dupa') }}">Dupa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='inne') }}">Inne</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('upload') }}">Prześlij film</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h2 class="neon-text">{{ category|capitalize }} - Filmy</h2>
+        <div class="row">
+            {% for video in videos %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <video controls>
+                        <source src="{{ url_for('static', filename='uploads/' ~ video.filename) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.title }}</h5>
+                        <p class="card-text">{{ video.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-neon mt-4">Powrót na stronę główną</a>
+    </div>
+</body>
+</html>

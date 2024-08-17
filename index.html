@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand neon-text" href="{{ url_for('index') }}">VideoSite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='cipka') }}">Cipka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='geje') }}">Geje</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='dupa') }}">Dupa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('category', category_name='inne') }}">Inne</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('upload') }}">Prześlij film</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container text-center">
+        <h1 class="neon-text mt-5">Witaj na stronie przesyłania filmów!</h1>
+        <a href="{{ url_for('upload') }}" class="btn btn-neon mt-3">Prześlij film</a>
+    </div>
+</body>
+</html>
